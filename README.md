@@ -1,29 +1,53 @@
-SENTINEL-1_wildfire_classification
+# SENTINEL-1 Wildfire Classification
 
-This product uses SENTINEL-1 polarimetric data to generate fire perimeter and burn severity maps from VH polarization backscatter.
-SENTINEL-1 data for study areas containing terrain shadow and This data alread run radiometric_terrain_correction(RTC).
+This project uses **Sentinel-1** polarimetric data to generate **fire perimeter** and **burn severity** maps using VH polarization backscatter.  
+The input Sentinel-1 data should already have **Radiometric Terrain Correction (RTC)** applied, especially for areas with terrain shadows.
 
-Data Info
+---
 
-File Descriptions
+## Project Overview
 
-Jupyter Notebooks
+This repository provides tools and workflows for:  
+- **Fire perimeter mapping**  
+- **Burn severity classification**  
+- **Image preprocessing and segmentation**  
 
-crop_image.ipynb: Crop the raster image by a fire perimeter in GeoJSON or shapefile format.
-preprocessing_segmentation.ipynb: Preprocess the images and perform superpixel segmentation. Outputs are saved for future use.
-perimeter_generation.ipynb: Generate the fire perimeter map.
-burn_severity_generation.ipynb: Generate the burn severity map (preprocessing happens here).
+The workflow leverages Sentinel-1 VH polarization backscatter to produce accurate wildfire mapping outputs.
 
-Python Scripts
+---
 
-process_utils.py: Utility functions for merging GeoJSON (perimeter) or images (severity).
-data_prep.py: Prepare data for processing.
-run_analysis.py: Run the main analysis pipeline.
+## File Descriptions
 
-Environment Setup
+### Jupyter Notebooks
+- **`crop_image.ipynb`**  
+  Crop raster images using fire perimeter boundaries provided in **GeoJSON** or **shapefile** format.
+  
+- **`preprocessing_segmentation.ipynb`**  
+  Preprocess images and perform **superpixel segmentation**. Intermediate outputs are saved for future steps.
+  
+- **`perimeter_generation.ipynb`**  
+  Generate the **fire perimeter** map from preprocessed Sentinel-1 data.
+  
+- **`burn_severity_generation.ipynb`**  
+  Generate the **burn severity** map, including preprocessing steps.
 
-environment.yml: Conda environment configuration file.
+---
 
-Environment Setup
+### Python Scripts
+- **`process_utils.py`**  
+  Utility functions for merging **GeoJSON** fire perimeters or **burn severity** images.
+  
+- **`data_prep.py`**  
+  Prepares input data for analysis and processing.
+  
+- **`run_analysis.py`**  
+  Runs the full **analysis pipeline** for fire perimeter and burn severity mapping.
 
-environment.yml: Conda environment configuration file.
+---
+
+## Environment Setup
+
+To create the required conda environment, run:
+```bash
+conda env create -f environment.yml
+conda activate sentinel1-wildfire
